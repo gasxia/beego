@@ -34,6 +34,7 @@ func newTaskCtx() *TaskContext{
 	userId, authUserId, _ := vanilla.ParseUserIdFromJwtToken(resource.CustomJWTToken)
 	ctx = context.WithValue(ctx, "user_id", userId)
 	ctx = context.WithValue(ctx, "uid", authUserId)
+	ctx = context.WithValue(ctx, "controller", "cron")
 	resource.Ctx = ctx
 	inst.Init(ctx, o, resource)
 	return inst
